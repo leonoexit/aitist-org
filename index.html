@@ -436,7 +436,7 @@
       <!-- CÂU 1 -->
       <div class="q-block">
         <label class="q-title" for="brandName">
-          1. Tên thương hiệu (tên riêng) của bạn là gì? <span class="req">*</span>
+          1. Tên thương hiệu (tên riêng) của bạn là gì?
         </label>
         <div class="q-hint">
           Ghi rõ tên riêng của thương hiệu để đưa vào lời bài hát (không chỉ ghi tên ngành nghề chung chung).
@@ -451,7 +451,7 @@
       <!-- CÂU 2 -->
       <div class="q-block">
         <label class="q-title" for="productValue">
-          2. Thương hiệu của bạn kinh doanh sản phẩm / dịch vụ gì? <span class="req">*</span>
+          2. Thương hiệu của bạn kinh doanh sản phẩm / dịch vụ gì?
         </label>
         <div class="q-hint">
           Ghi ngắn gọn bạn đang bán cái gì và điểm gì ở sản phẩm khiến khách hàng thích nhất.
@@ -460,13 +460,13 @@
             Ví dụ 2 (nha khoa <strong>Minh Châu</strong>): <em>"Dịch vụ niềng răng và bọc răng sứ. Điểm mạnh là bác sĩ làm êm, không đau, bảo hành rõ ràng."</em>
           </div>
         </div>
-        <textarea id="productValue" required placeholder="Bạn đang bán sản phẩm/dịch vụ gì và điểm mạnh nhất là gì?..."></textarea>
+        <textarea id="productValue" placeholder="Bạn đang bán sản phẩm/dịch vụ gì và điểm mạnh nhất là gì?..."></textarea>
       </div>
 
       <!-- CÂU 3 -->
       <div class="q-block">
         <span class="q-title">
-          3. Bài nhạc làm cho cả thương hiệu hay chỉ 01 sản phẩm lẻ? <span class="req">*</span>
+          3. Bài nhạc làm cho cả thương hiệu hay chỉ 01 sản phẩm lẻ?
         </span>
         <div class="choice-list" style="margin-bottom: 12px;">
           <label class="choice-item">
@@ -484,22 +484,22 @@
       <!-- CÂU 4 -->
       <div class="q-block">
         <label class="q-title" for="coreMessage">
-          4. Câu thông điệp bạn muốn lặp đi lặp lại trong bài hát là gì? <span class="req">*</span>
+          4. Câu thông điệp bạn muốn lặp đi lặp lại trong bài hát là gì?
         </label>
         <div class="q-hint">
-          Nếu chưa nghĩ ra câu vần điệu, bạn chỉ cần ghi ý chính — tôi sẽ trực tiếp viết thành câu Hook cho bạn.
+          Nếu chưa nghĩ ra câu vần điệu, bạn chỉ cần ghi ý chính (hoặc để trống để tôi đề xuất câu Hook cho bạn).
           <div class="q-example">
             Ví dụ 1 (cà phê <strong>Vĩnh Phát</strong>): <em>"Buồn ngủ rũ rượi, uống <strong>Vĩnh Phát</strong> là tỉnh liền!"</em><br />
             Ví dụ 2 (nha khoa <strong>Minh Châu</strong>): <em>"Răng đều trắng sáng, đến ngay nha khoa <strong>Minh Châu</strong>."</em>
           </div>
         </div>
-        <textarea id="coreMessage" required placeholder="Nhập câu thông điệp hoặc ý chính của bạn..."></textarea>
+        <textarea id="coreMessage" placeholder="Nhập câu thông điệp hoặc ý chính của bạn (không bắt buộc)..."></textarea>
       </div>
 
       <!-- CÂU 5 -->
       <div class="q-block">
         <span class="q-title">
-          5. Bạn thích bài nhạc mang màu sắc nào? <span class="req">*</span>
+          5. Bạn thích bài nhạc mang màu sắc nào?
         </span>
         <div class="choice-list">
           <label class="choice-item">
@@ -524,30 +524,33 @@
       <!-- CÂU 6 -->
       <div class="q-block">
         <label class="q-title" for="targetAudience">
-          6. Khách hàng của bạn là ai và nhạc sẽ phát ở đâu? <span class="req">*</span>
+          6. Khách hàng của bạn là ai và nhạc sẽ phát ở đâu?
         </label>
         <div class="q-hint">
           <div class="q-example" style="margin-top: 2px;">
             Ví dụ: <em>Dân văn phòng 22–35 tuổi. Dùng đăng Facebook Reels, TikTok và chạy quảng cáo.</em>
           </div>
         </div>
-        <input type="text" id="targetAudience" required placeholder="Nhập tệp khách hàng & kênh phát..." />
+        <input type="text" id="targetAudience" placeholder="Nhập tệp khách hàng & kênh phát (không bắt buộc)..." />
       </div>
 
       <!-- CÂU 7 -->
       <div class="q-block">
         <span class="q-title">
-          7. Thông tin liên hệ của bạn <span class="req">*</span>
+          7. Thông tin liên hệ của bạn
         </span>
+        <div class="q-hint" style="margin-bottom: 8px;">
+          Bạn chỉ cần để lại thông tin kênh nào tiện liên lạc nhất với bạn.
+        </div>
 
         <div class="contact-grid">
           <div class="contact-full">
-            <label class="sub-label" for="contactName">Tên bạn là gì? <span class="req">*</span></label>
-            <input type="text" id="contactName" required placeholder="VD: Minh Anh" />
+            <label class="sub-label" for="contactName">Tên bạn là gì?</label>
+            <input type="text" id="contactName" placeholder="VD: Minh Anh" />
           </div>
 
           <div class="contact-full">
-            <span class="sub-label">Bạn là chủ thương hiệu hay người đại diện mua sản phẩm? <span class="req">*</span></span>
+            <span class="sub-label">Bạn là chủ thương hiệu hay người đại diện mua sản phẩm?</span>
             <div class="choice-list" style="margin-top: 4px;">
               <label class="choice-item">
                 <input type="radio" name="buyerRole" value="Chủ thương hiệu" checked />
@@ -561,18 +564,18 @@
           </div>
 
           <div>
-            <label class="sub-label" for="contactPhone">Số điện thoại <span class="req">*</span></label>
-            <input type="tel" id="contactPhone" required placeholder="VD: 0905.123.456" />
+            <label class="sub-label" for="contactPhone">Số điện thoại</label>
+            <input type="tel" id="contactPhone" placeholder="VD: 0905.123.456" />
           </div>
 
           <div>
-            <label class="sub-label" for="contactEmail">Email <span class="req">*</span></label>
-            <input type="email" id="contactEmail" required placeholder="VD: minhanh@congty.vn" />
+            <label class="sub-label" for="contactEmail">Email</label>
+            <input type="email" id="contactEmail" placeholder="VD: minhanh@congty.vn" />
           </div>
 
           <div class="contact-full">
-            <label class="sub-label" for="contactFacebook">Facebook <span class="req">*</span></label>
-            <input type="text" id="contactFacebook" required placeholder="VD: fb.com/minhanh" />
+            <label class="sub-label" for="contactFacebook">Facebook</label>
+            <input type="text" id="contactFacebook" placeholder="VD: fb.com/minhanh" />
           </div>
         </div>
       </div>
@@ -625,18 +628,18 @@
     btn.disabled = true;
     btn.textContent = 'Đang gửi...';
 
-    const brand = document.getElementById('brandName').value.trim();
-    const val = document.getElementById('productValue').value.trim();
+    const brand = document.getElementById('brandName').value.trim() || '(Chưa điền)';
+    const val = document.getElementById('productValue').value.trim() || '(Chưa điền)';
     const scope = document.querySelector('input[name="scope"]:checked').value;
     const prod = document.getElementById('productName').value.trim() || '(Toàn bộ thương hiệu)';
-    const msg = document.getElementById('coreMessage').value.trim();
+    const msg = document.getElementById('coreMessage').value.trim() || '(Nhờ AITIST Studio đề xuất)';
     const style = document.querySelector('input[name="brandStyle"]:checked').value;
-    const aud = document.getElementById('targetAudience').value.trim();
-    const name = document.getElementById('contactName').value.trim();
+    const aud = document.getElementById('targetAudience').value.trim() || '(Chưa điền)';
+    const name = document.getElementById('contactName').value.trim() || '(Chưa điền)';
     const role = document.querySelector('input[name="buyerRole"]:checked').value;
-    const email = document.getElementById('contactEmail').value.trim();
-    const phone = document.getElementById('contactPhone').value.trim();
-    const fb = document.getElementById('contactFacebook').value.trim();
+    const email = document.getElementById('contactEmail').value.trim() || '(Chưa điền)';
+    const phone = document.getElementById('contactPhone').value.trim() || '(Chưa điền)';
+    const fb = document.getElementById('contactFacebook').value.trim() || '(Chưa điền)';
 
     const summaryText =
 `[PHIẾU THIẾT KẾ NHẠC THƯƠNG HIỆU — AITIST STUDIO]
