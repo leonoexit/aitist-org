@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AITIST Studio — Phiếu Thông Tin Thiết Kế Nhạc Thương Hiệu</title>
+  <meta name="description" content="Phiếu đăng ký thông tin thiết kế âm nhạc thương hiệu độc quyền (Music Marketing) — AITIST Studio." />
+  <style>
+    :root {
+      --bg-page: #f4f4f2;
+      --bg-card: #ffffff;
+      --bg-subtle: #f8f8f7;
+      --text-main: #202124;
+      --text-secondary: #5f6368;
+      --border: #dadce0;
+      --accent: #202124;
+      --required: #d93025;
+      --success: #188038;
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.55;
+      font-size: 15px;
+      padding: 28px 16px 80px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* Google Form Card Layout */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 14px;
+    }
+
+    .card-header {
+      border-top: 8px solid var(--accent);
+    }
+
+    .form-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text-main);
+    }
+
+    .form-intro {
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .package-summary {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 14px 16px;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .package-summary strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 6px;
+      color: var(--text-main);
+    }
+
+    .package-summary ul {
+      padding-left: 18px;
+      color: var(--text-secondary);
+    }
+
+    .package-summary li {
+      margin-bottom: 4px;
+    }
+
+    .required-note {
+      font-size: 13px;
+      color: var(--required);
+      margin-top: 12px;
+    }
+
+    /* YouTube Showcase Minimalist Card */
+    .yt-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .yt-tab {
+      background: var(--bg-subtle);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      padding: 7px 12px;
+      border-radius: 6px;
+      font-size: 13.5px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .yt-tab:hover {
+      background: #e8eaed;
+    }
+
+    .yt-tab.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .yt-player-wrap {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      background: #000;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .yt-player-wrap iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .yt-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .yt-meta a {
+      color: var(--text-main);
+      font-weight: 500;
+      text-decoration: underline;
+    }
+
+    /* Question Hierarchy */
+    .q-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .req {
+      color: var(--required);
+      margin-left: 2px;
+    }
+
+    .q-desc {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .q-example {
+      background: var(--bg-subtle);
+      border-left: 3px solid #9aa0a6;
+      padding: 8px 12px;
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* Input Controls */
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 14.5px;
+      font-family: inherit;
+      color: var(--text-main);
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      transition: border-color 0.15s;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      border-width: 1.5px;
+    }
+
+    textarea {
+      min-height: 96px;
+      resize: vertical;
+    }
+
+    /* Radio List */
+    .choice-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .choice-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14.5px;
+      color: var(--text-main);
+      cursor: pointer;
+    }
+
+    .choice-item input[type="radio"] {
+      margin-top: 4px;
+      width: 16px;
+      height: 16px;
+      accent-color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* Submit Row */
+    .submit-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 18px;
+    }
+
+    .btn-submit {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 4px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
+    .btn-submit:hover {
+      opacity: 0.9;
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .btn-clear {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 13.5px;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    /* Success Message Card */
+    .success-card {
+      display: none;
+      border-top: 8px solid var(--success);
+      text-align: left;
+    }
+
+    .success-card.active {
+      display: block;
+    }
+
+    .success-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--success);
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <form id="b2bForm" onsubmit="handleFormSubmit(event)">
+
+    <!-- HEADER CARD -->
+    <div class="card card-header">
+      <h1 class="form-title">Phiếu Thông Tin Thiết Kế Nhạc Thương Hiệu — AITIST Studio</h1>
+      <p class="form-intro">
+        Điền nhanh 7 thông tin dưới đây để AITIST Studio nắm rõ sản phẩm và thông điệp của bạn trước khi thiết kế âm nhạc.
+      </p>
+
+      <div class="package-summary">
+        <strong>Gói Dịch Vụ Tiêu Chuẩn (Duy nhất 01 gói): 5.000.000 VNĐ / bài</strong>
+        <ul>
+          <li><strong>Sản phẩm:</strong> 01 bài hát hoàn chỉnh (1–2 phút), tối ưu cho video ngắn và quảng cáo.</li>
+          <li><strong>Bao gồm:</strong> Sáng tác câu Hook (điệp khúc lặp lại tên thương hiệu) + Sản xuất nhạc hoàn chỉnh.</li>
+        </ul>
+      </div>
+
+      <p class="required-note">* Câu hỏi bắt buộc</p>
+    </div>
+
+    <!-- CARD SHOWCASE: 3 VIDEO YOUTUBE -->
+    <div class="card">
+      <span class="q-title">
+        Nghe thử các bài nhạc thực tế do AITIST Studio sản xuất
+      </span>
+      <div class="q-desc" style="margin-bottom: 12px;">
+        Bấm chọn từng bài bên dưới để nghe cách thông điệp được chuyển hóa thành âm nhạc:
+      </div>
+
+      <div class="yt-tabs">
+        <button type="button" class="yt-tab active" onclick="switchVideo('30i7CqtOjeg', 'Tôi Bán Nhạc Ây Ai', this)">
+          ▶ 1. Tôi Bán Nhạc Ây Ai
+        </button>
+        <button type="button" class="yt-tab" onclick="switchVideo('g2bCexJb2ik', 'Em mơ làm ca sĩ', this)">
+          ▶ 2. Em mơ làm ca sĩ
+        </button>
+        <button type="button" class="yt-tab" onclick="switchVideo('h-PZmJSmzTU', 'Đàn ông mà lại thích màu hồng', this)">
+          ▶ 3. Đàn ông mà lại thích màu hồng
+        </button>
+      </div>
+
+      <div class="yt-player-wrap">
+        <iframe
+          id="ytIframe"
+          src="https://www.youtube.com/embed/30i7CqtOjeg?rel=0"
+          title="Tôi Bán Nhạc Ây Ai — AITIST Studio"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="yt-meta">
+        <span id="ytCurrentTitle">Đang chọn: Tôi Bán Nhạc Ây Ai</span>
+        <a id="ytDirectLink" href="https://youtu.be/30i7CqtOjeg" target="_blank" rel="noopener">Mở trực tiếp trên YouTube ↗</a>
+      </div>
+    </div>
+
+    <!-- CÂU 1: TÊN THƯƠNG HIỆU -->
+    <div class="card">
+      <label class="q-title" for="brandName">
+        1. Tên thương hiệu (tên riêng) của bạn là gì? <span class="req">*</span>
+      </label>
+      <div class="q-desc">
+        Ghi rõ <strong>tên riêng</strong> của thương hiệu để đưa vào lời bài hát (không chỉ ghi tên ngành nghề chung chung).
+        <div class="q-example">
+          ❌ Chưa rõ tên riêng: <em>"Trường liên cấp quốc tế"</em>, <em>"Quán cà phê rang xay"</em><br />
+          ✅ Đúng (Có tên riêng): <em>trường quốc tế <strong>Sao Khuê</strong></em>, <em>cà phê <strong>Vĩnh Phát</strong></em>, <em>nha khoa <strong>Minh Châu</strong></em>
+        </div>
+      </div>
+      <input type="text" id="brandName" name="1_Ten_Thuong_Hieu" required placeholder="Nhập tên riêng thương hiệu của bạn..." />
+    </div>
+
+    <!-- CÂU 2: KINH DOANH SẢN PHẨM / DỊCH VỤ GÌ -->
+    <div class="card">
+      <label class="q-title" for="productValue">
+        2. Thương hiệu của bạn kinh doanh sản phẩm / dịch vụ gì? <span class="req">*</span>
+      </label>
+      <div class="q-desc">
+        Ghi ngắn gọn bạn đang bán cái gì và <strong>điểm gì ở sản phẩm khiến khách hàng thích nhất</strong>.
+        <div class="q-example">
+          • Ví dụ 1 (cà phê <strong>Vĩnh Phát</strong>): <em>"Bán cà phê pha máy mang đi. Điểm mạnh là cà phê rang mộc nguyên chất, uống tỉnh táo làm việc mà không bị say."</em><br />
+          • Ví dụ 2 (nha khoa <strong>Minh Châu</strong>): <em>"Dịch vụ niềng răng và bọc răng sứ. Điểm mạnh là bác sĩ làm êm, không đau, bảo hành rõ ràng."</em>
+        </div>
+      </div>
+      <textarea id="productValue" name="2_San_Pham_Va_Diem_Manh" required placeholder="Bạn đang bán sản phẩm/dịch vụ gì và điểm mạnh nhất là gì?..."></textarea>
+    </div>
+
+    <!-- CÂU 3: PHẠM VI TIẾP THỊ -->
+    <div class="card">
+      <span class="q-title">
+        3. Bài nhạc làm cho cả thương hiệu hay chỉ 01 sản phẩm lẻ? <span class="req">*</span>
+      </span>
+      <div class="choice-list" style="margin: 12px 0;">
+        <label class="choice-item">
+          <input type="radio" name="scope" value="Toàn bộ thương hiệu" checked />
+          <span>Làm cho <strong>cả thương hiệu</strong> (VD: Quảng cáo cho quán cà phê <strong>Vĩnh Phát</strong> nói chung)</span>
+        </label>
+        <label class="choice-item">
+          <input type="radio" name="scope" value="01 sản phẩm cụ thể" />
+          <span>Chỉ làm cho <strong>01 sản phẩm cụ thể</strong> (VD: Chỉ quảng cáo món mới <strong>Bạc Xỉu Muối Vĩnh Phát</strong>)</span>
+        </label>
+      </div>
+      <input type="text" id="productName" name="3_Ten_San_Pham_Cu_The" placeholder="Nếu chọn 01 sản phẩm cụ thể, ghi tên sản phẩm tại đây..." />
+    </div>
+
+    <!-- CÂU 4: THÔNG ĐIỆP CỐT LÕI -->
+    <div class="card">
+      <label class="q-title" for="coreMessage">
+        4. Câu thông điệp bạn muốn lặp đi lặp lại trong bài hát là gì? <span class="req">*</span>
+      </label>
+      <div class="q-desc">
+        Nếu chưa nghĩ ra câu vần điệu, bạn chỉ cần ghi ý chính — tôi sẽ trực tiếp viết thành câu Hook cho bạn.
+        <div class="q-example">
+          • Ví dụ 1 (cà phê <strong>Vĩnh Phát</strong>): <em>"Buồn ngủ rũ rượi, uống <strong>Vĩnh Phát</strong> là tỉnh liền!"</em><br />
+          • Ví dụ 2 (nha khoa <strong>Minh Châu</strong>): <em>"Răng đều trắng sáng, đến ngay nha khoa <strong>Minh Châu</strong>."</em>
+        </div>
+      </div>
+      <textarea id="coreMessage" name="4_Thong_Diep_Cot_Loi" required placeholder="Nhập câu thông điệp hoặc ý chính của bạn..."></textarea>
+    </div>
+
+    <!-- CÂU 5: PHONG CÁCH ÂM NHẠC -->
+    <div class="card">
+      <span class="q-title">
+        5. Bạn thích bài nhạc mang màu sắc nào? <span class="req">*</span>
+      </span>
+      <div class="choice-list" style="margin-top: 12px;">
+        <label class="choice-item">
+          <input type="radio" name="brandStyle" value="Sôi động, bắt tai, lặp lại gây nghiện" checked />
+          <span><strong>Sôi động, bắt tai:</strong> Nhịp nhanh, vui nhộn, nghe 1 lần là nhớ tên thương hiệu</span>
+        </label>
+        <label class="choice-item">
+          <input type="radio" name="brandStyle" value="Hài hước, đời thường (Storytelling)" />
+          <span><strong>Hài hước, đời thường:</strong> Xoáy vào tình huống thực tế của người mua</span>
+        </label>
+        <label class="choice-item">
+          <input type="radio" name="brandStyle" value="Hào hùng, truyền cảm hứng, trang trọng" />
+          <span><strong>Hào hùng, trang trọng:</strong> Truyền cảm hứng, lịch sự (hợp công ty, trường học)</span>
+        </label>
+        <label class="choice-item">
+          <input type="radio" name="brandStyle" value="Nhờ AITIST Studio đề xuất phong cách phù hợp nhất" />
+          <span><strong>Nhờ AITIST Studio đề xuất:</strong> Chọn phong cách hợp nhất với sản phẩm ở trên</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- CÂU 6: KHÁCH HÀNG & KÊNH PHÁT -->
+    <div class="card">
+      <label class="q-title" for="targetAudience">
+        6. Khách hàng của bạn là ai và nhạc sẽ phát ở đâu? <span class="req">*</span>
+      </label>
+      <div class="q-desc">
+        <div class="q-example">
+          Ví dụ: <em>Dân văn phòng 22–35 tuổi. Dùng đăng Facebook Reels, TikTok và chạy quảng cáo.</em>
+        </div>
+      </div>
+      <input type="text" id="targetAudience" name="6_Khach_Hang_Va_Kenh_Phat" required placeholder="Nhập tệp khách hàng & kênh phát..." />
+    </div>
+
+    <!-- CÂU 7: THÔNG TIN LIÊN HỆ -->
+    <div class="card">
+      <span class="q-title" style="margin-bottom: 14px;">
+        7. Thông tin liên hệ của bạn <span class="req">*</span>
+      </span>
+
+      <div style="margin-bottom: 14px;">
+        <label style="display:block; font-size:14px; font-weight:600; margin-bottom:6px;" for="contactName">
+          Tên bạn là gì? <span class="req">*</span>
+        </label>
+        <input type="text" id="contactName" name="7a_Ten_Nguoi_Lien_He" required placeholder="VD: Minh Anh" />
+      </div>
+
+      <div style="margin-bottom: 14px;">
+        <span style="display:block; font-size:14px; font-weight:600; margin-bottom:8px;">
+          Bạn là chủ thương hiệu hay người đại diện mua sản phẩm? <span class="req">*</span>
+        </span>
+        <div class="choice-list">
+          <label class="choice-item">
+            <input type="radio" name="buyerRole" value="Chủ thương hiệu" checked />
+            <span>Chủ thương hiệu</span>
+          </label>
+          <label class="choice-item">
+            <input type="radio" name="buyerRole" value="Người đại diện mua sản phẩm" />
+            <span>Người đại diện mua sản phẩm</span>
+          </label>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 14px;">
+        <label style="display:block; font-size:14px; font-weight:600; margin-bottom:6px;" for="contactEmail">
+          Email <span class="req">*</span>
+        </label>
+        <input type="email" id="contactEmail" name="email" required placeholder="VD: minhanh@congty.vn" />
+      </div>
+
+      <div style="margin-bottom: 14px;">
+        <label style="display:block; font-size:14px; font-weight:600; margin-bottom:6px;" for="contactPhone">
+          Số điện thoại <span class="req">*</span>
+        </label>
+        <input type="tel" id="contactPhone" name="7c_So_Dien_Thoai" required placeholder="VD: 0905.123.456" />
+      </div>
+
+      <div>
+        <label style="display:block; font-size:14px; font-weight:600; margin-bottom:6px;" for="contactFacebook">
+          Facebook <span class="req">*</span>
+        </label>
+        <input type="text" id="contactFacebook" name="7d_Facebook" required placeholder="VD: fb.com/minhanh" />
+      </div>
+    </div>
+
+    <!-- NÚT GỬI -->
+    <div class="submit-row" id="submitRow">
+      <button type="submit" id="submitBtn" class="btn-submit">Gửi biểu mẫu</button>
+      <button type="button" class="btn-clear" onclick="document.getElementById('b2bForm').reset()">Xóa hết câu trả lời</button>
+    </div>
+
+  </form>
+
+  <!-- THÔNG BÁO GỬI THÀNH CÔNG -->
+  <div id="successCard" class="card success-card">
+    <div class="success-title">✅ Đã gửi thông tin thành công!</div>
+    <p style="font-size: 14.5px; color: var(--text-main); margin-bottom: 12px;">
+      Cảm ơn bạn đã gửi thông tin thương hiệu cho <strong>AITIST Studio</strong>. Tôi sẽ xem kỹ đề bài của bạn và chủ động liên hệ qua Số điện thoại / Facebook bạn đã cung cấp trong thời gian sớm nhất.
+    </p>
+    <button type="button" class="btn-clear" onclick="location.reload()">Gửi một phản hồi khác</button>
+  </div>
+
+</div>
+
+<script>
+  function switchVideo(videoId, title, btnEl) {
+    document.querySelectorAll('.yt-tab').forEach(el => el.classList.remove('active'));
+    btnEl.classList.add('active');
+    document.getElementById('ytIframe').src = `https://www.youtube.com/embed/${videoId}?rel=0&autoplay=1`;
+    document.getElementById('ytCurrentTitle').textContent = `Đang chọn: ${title}`;
+    document.getElementById('ytDirectLink').href = `https://youtu.be/${videoId}`;
+  }
+
+  async function handleFormSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    const oldText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Đang gửi thông tin...';
+
+    const brand = document.getElementById('brandName').value.trim();
+    const val = document.getElementById('productValue').value.trim();
+    const scope = document.querySelector('input[name="scope"]:checked').value;
+    const prod = document.getElementById('productName').value.trim() || '(Toàn bộ thương hiệu)';
+    const msg = document.getElementById('coreMessage').value.trim();
+    const style = document.querySelector('input[name="brandStyle"]:checked').value;
+    const aud = document.getElementById('targetAudience').value.trim();
+    const name = document.getElementById('contactName').value.trim();
+    const role = document.querySelector('input[name="buyerRole"]:checked').value;
+    const email = document.getElementById('contactEmail').value.trim();
+    const phone = document.getElementById('contactPhone').value.trim();
+    const fb = document.getElementById('contactFacebook').value.trim();
+
+    const payload = {
+      _subject: `[AITIST Studio - Phiếu Nhạc 5M] ${brand} — ${name} (${role})`,
+      _template: 'table',
+      _captcha: 'false',
+      "1. Tên thương hiệu": brand,
+      "2. Sản phẩm & Điểm mạnh": val,
+      "3. Phạm vi tiếp thị": `${scope} — ${prod}`,
+      "4. Thông điệp cốt lõi": msg,
+      "5. Phong cách nhạc": style,
+      "6. Khách hàng & Kênh phát": aud,
+      "7a. Người liên hệ": name,
+      "7b. Vai trò": role,
+      "7c. Email": email,
+      "7d. Số điện thoại": phone,
+      "7e. Facebook": fb
+    };
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/leonoexit@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (response.ok) {
+        document.getElementById('b2bForm').style.display = 'none';
+        const sc = document.getElementById('successCard');
+        sc.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        throw new Error('Server returned error');
+      }
+    } catch (err) {
+      alert('Hệ thống đang bận, vui lòng thử lại hoặc gửi trực tiếp qua email leonoexit@gmail.com');
+      btn.disabled = false;
+      btn.textContent = oldText;
+    }
+  }
+</script>
+
+</body>
+</html>
