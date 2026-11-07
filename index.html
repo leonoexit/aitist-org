@@ -589,52 +589,43 @@
 6. Khách hàng & Kênh phát: ${aud}
 7. Liên hệ: ${name} (${role}) | SĐT: ${phone} | Email: ${email} | FB: ${fb}`;
 
-    const payload = {
-      _subject: `[AITIST Studio - Phiếu Nhạc 5M] ${brand} — ${name} (${role})`,
-      _template: 'table',
-      _captcha: 'false',
-      "1. Tên thương hiệu": brand,
-      "2. Sản phẩm & Điểm mạnh": val,
-      "3. Phạm vi tiếp thị": `${scope} — ${prod}`,
-      "4. Thông điệp cốt lõi": msg,
-      "5. Phong cách nhạc": style,
-      "6. Khách hàng & Kênh phát": aud,
-      "7a. Người liên hệ": name,
-      "7b. Vai trò": role,
-      "7c. Email": email,
-      "7d. Số điện thoại": phone,
-      "7e. Facebook": fb
+    const sheetPayload = {
+      brand: brand,
+      val: val,
+      scope: `${scope} — ${prod}`,
+      msg: msg,
+      style: style,
+      aud: aud,
+      name: name,
+      role: role,
+      email: email,
+      phone: phone,
+      fb: fb,
+      summary: summaryText
     };
 
-    // Kênh 1 (Chính - Tốc độ 0.2s): Đẩy thẳng về hộp thư Cloud thời gian thực của AITIST Studio
-    const ntfyPromise = fetch('https://ntfy.sh/aitist_studio_b2b_lead_9f8a7b6c', {
-      method: 'POST',
-      headers: {
-        'Title': `Don Nhac 5M: ${brand} - ${name} (${phone})`
-      },
-      body: summaryText
-    }).catch(() => null);
+    const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxCXfdNariRAnXPD9Yl6tQc-gJEyKm4gZolIa_7aVISQKFyPEv_P7OVO1eyKhPe22mYEQ/exec';
 
-    // Kênh 2 (Phụ - Chạy ngầm): Đẩy về Gmail qua FormSubmit (có timeout 2.5s để không bao giờ treo khi FormSubmit bảo trì)
-    const emailController = new AbortController();
-    setTimeout(() => emailController.abort(), 2500);
-    fetch('https://formsubmit.co/ajax/leonoexit@gmail.com', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(payload),
-      signal: emailController.signal
-    }).catch(() => null);
+    try {
+      await fetch(GOOGLE_SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8'
+        },
+        body: JSON.stringify(sheetPayload)
+      });
 
-    await ntfyPromise;
-
-    document.getElementById('submittedSummary').textContent = summaryText;
-    document.getElementById('b2bForm').style.display = 'none';
-    const sc = document.getElementById('successCard');
-    sc.classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.getElementById('submittedSummary').textContent = summaryText;
+      document.getElementById('b2bForm').style.display = 'none';
+      const sc = document.getElementById('successCard');
+      sc.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (err) {
+      alert('Không thể kết nối mạng, vui lòng kiểm tra kết nối Internet và thử lại.');
+      btn.disabled = false;
+      btn.textContent = 'Gửi biểu mẫu';
+    }
   }
 </script>
 
