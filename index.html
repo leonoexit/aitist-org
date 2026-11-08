@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AITIST Studio — Thiết Kế Nhạc Thương Hiệu</title>
-  <meta name="description" content="Phiếu thông tin thiết kế nhạc thương hiệu — AITIST Studio." />
+  <meta name="description" content="Thiết kế nhạc thương hiệu — AITIST Studio." />
   <style>
     :root {
       --bg-page: #f7f7f5;
@@ -390,9 +390,9 @@
 
   <div id="mainFormView">
     <div class="brand-tag">AITIST Studio</div>
-    <h1>Phiếu Thông Tin Thiết Kế Nhạc Thương Hiệu</h1>
+    <h1>Thiết Kế Nhạc Thương Hiệu</h1>
     <p class="intro-text">
-      Điền nhanh 7 thông tin dưới đây để tôi nắm rõ sản phẩm và thông điệp của bạn trước khi thiết kế âm nhạc.
+      Nghe thử các sản phẩm thực tế và chia sẻ nhu cầu thương hiệu của bạn dưới đây để tôi lên phương án âm nhạc.
     </p>
 
     <!-- KHUNG GIÁ GỌN & SẠCH -->
@@ -582,7 +582,7 @@
 
       <!-- NÚT GỬI -->
       <div class="submit-area">
-        <button type="submit" id="submitBtn" class="btn-submit">Gửi biểu mẫu</button>
+        <button type="submit" id="submitBtn" class="btn-submit">Gửi nhu cầu thiết kế nhạc</button>
         <button type="button" class="btn-clear" onclick="document.getElementById('b2bForm').reset()">Xóa câu trả lời</button>
       </div>
 
@@ -591,9 +591,9 @@
 
   <!-- THÔNG BÁO GỬI THÀNH CÔNG -->
   <div id="successCard" class="success-view">
-    <div class="success-title">✅ Đã gửi thông tin thành công!</div>
+    <div class="success-title">✅ Đã gửi nhu cầu thành công!</div>
     <p style="font-size: 15px; color: var(--text-secondary); margin-bottom: 18px;">
-      Cảm ơn bạn đã gửi thông tin thương hiệu cho <strong>AITIST Studio</strong>. Tôi sẽ xem kỹ đề bài và chủ động liên hệ với bạn trong thời gian sớm nhất.
+      Cảm ơn bạn đã chia sẻ nhu cầu thương hiệu với <strong>AITIST Studio</strong>. Tôi sẽ xem kỹ đề bài và chủ động liên hệ với bạn trong thời gian sớm nhất.
     </p>
     <div style="background: #fafaf9; border: 1px solid #e6e6e3; border-radius: 8px; padding: 16px; margin-bottom: 18px;">
       <pre id="submittedSummary" style="white-space: pre-wrap; font-family: inherit; font-size: 13.5px; color: var(--text-main); line-height: 1.55;"></pre>
@@ -642,7 +642,7 @@
     const fb = document.getElementById('contactFacebook').value.trim() || '(Chưa điền)';
 
     const summaryText =
-`[PHIẾU THIẾT KẾ NHẠC THƯƠNG HIỆU — AITIST STUDIO]
+`[THIẾT KẾ NHẠC THƯƠNG HIỆU — AITIST STUDIO]
 1. Tên thương hiệu: ${brand}
 2. Sản phẩm & Điểm mạnh: ${val}
 3. Phạm vi tiếp thị: ${scope} — ${prod}
@@ -686,7 +686,7 @@
     } catch (err) {
       alert('Không thể kết nối mạng, vui lòng kiểm tra kết nối Internet và thử lại.');
       btn.disabled = false;
-      btn.textContent = 'Gửi biểu mẫu';
+      btn.textContent = 'Gửi nhu cầu thiết kế nhạc';
     }
   }
 </script>
